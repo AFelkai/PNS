@@ -1,0 +1,27 @@
+{
+  "name": "csun-saps-dev",
+  "version": "1.0.0",
+  "description": "CSUN SAPS Repository for the application source code",
+  "main": "app.js",
+  "scripts": {
+    "start": "node index.js",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+ssh://git@gitlab.com/csun-saps-ops/csun-saps-dev.git"
+  },
+  "keywords": [
+    "CSUN",
+    "SAPS"
+  ],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://gitlab.com/csun-saps-ops/csun-saps-dev/issues"
+  },
+  "homepage": "https://gitlab.com/csun-saps-ops/csun-saps-dev#readme",
+  "dependencies": {
+    "express": "^4.16.4"
+  }
+}
