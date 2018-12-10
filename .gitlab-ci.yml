@@ -11,3 +11,7 @@ test_async:
   stage: test
   script:
    - npm install
+  only:
+    refs:
+      - master
+
