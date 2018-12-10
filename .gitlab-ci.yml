@@ -1,0 +1,13 @@
+image: node:10-alpine
+
+cache:
+  paths:
+  - node_modules/
+
+stages:
+  - test
+
+test_async:
+  stage: test
+  script:
+   - npm install
