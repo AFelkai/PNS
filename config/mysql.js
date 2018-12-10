@@ -2,7 +2,7 @@
     // mysql settings
     mysql_client: {
       // host
-      host: process.env.DATABASE_HOST || 'localhost',
+      host: process.env.DATABASE_HOST || 'mysql',
       // port
       port: '3306',
       // username

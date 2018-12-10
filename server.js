@@ -19,13 +19,13 @@ let connection = mysql.createConnection({
   port     : config.mysql_client.port
 });
 
-// connection.connect(function(err) {
-//   if (err) {
-//     console.error('error connecting: ' + err.stack);
-//     return;
-//   }
-//   console.log('connected as id ' + connection.threadId);
-// });
+connection.connect(function(err) {
+  if (err) {
+    console.error('error connecting: ' + err.stack);
+    return;
+  }
+  console.log('connected as id ' + connection.threadId);
+});
 
 // App
 app.get('/', (req, res) => {
