@@ -2,7 +2,7 @@
 
 CSUN SAPS Repository for the application source code
 
-# Build & Run image locally
+# Build & Run App locally
 1. Run `docker build -t saps-app .`  
 2. It will take some time to install the dependencies, be patient.
 3. Once done, run `docker images` and you will see your newly created image there.
