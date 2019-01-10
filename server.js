@@ -8,7 +8,7 @@ const mysql = require('mysql');
 const config = require("./config/mysql");
 
 // Constants
-const PORT = 8080;
+const PORT = 3000;
 
 // mysql connection
 let connection = mysql.createConnection({
