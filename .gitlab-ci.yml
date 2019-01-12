@@ -1,8 +1,5 @@
 image: node:10-alpine
 
-variables:
-  REPOSITORY_URL: 485876055632.dkr.ecr.us-west-2.amazonaws.com/csun-saps-prod
-
 cache:
   paths:
   - node_modules/
