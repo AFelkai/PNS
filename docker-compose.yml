@@ -12,6 +12,7 @@ services:
             - docker_network
         volumes:
             - .:/usr/src/app
+            - /usr/src/app/node_modules
     mysql:
         build:
             context: ./mysql
