@@ -29,8 +29,12 @@ connection.connect(function(err) {
 
 // App
 app.get('/', (req, res) => {
-  res.send('Hello World\n');
+  res.send('BOB?\n');
 });
+
+app.get("*", (req,res) => {
+  res.send("404");
+})
 
 
 app.listen(PORT, () => {
