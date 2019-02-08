@@ -3,7 +3,7 @@ version: '3.3'
 services:
     node:
         build:
-            context: .
+            context: ./backend
         ports:
             - "3000:3000"
         depends_on:
@@ -11,7 +11,7 @@ services:
         networks:
             - docker_network
         volumes:
-            - .:/usr/src/app
+            - ./backend:/usr/src/app
             - /usr/src/app/node_modules
         command: npm run dev
     mysql:
@@ -25,9 +25,19 @@ services:
         volumes:
             - ./data/mysql/:/var/lib/mysql
         ports:
-            - "3307:3306"
+            - "3306:3306"
         networks:
             - docker_network
+    angular:
+        build:
+            context: ./frontend
+        ports:
+            - "4200:4200"
+        networks:
+            - docker_network
+        volumes:
+            - ./frontend:/usr/src/app
+            - /usr/src/app/node_modules
 networks:
     docker_network:
         driver: bridge
