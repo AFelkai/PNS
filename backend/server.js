@@ -28,8 +28,8 @@ connection.connect(function(err) {
 });
 
 // App
-app.get('/', (req, res) => {
-  res.send('BOB?\n');
+app.get('/api/*', (req, res) => {
+  res.json({"message": "Hello World"});
 });
 
 app.get("*", (req,res) => {
