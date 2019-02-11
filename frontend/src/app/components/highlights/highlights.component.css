@@ -1,0 +1,26 @@
+/* .container{
+    position: relative;
+} */
+
+.img-scale img{
+    width: 40%;
+    height: auto;
+}
+
+.icon{
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    width: 60%;
+}
+
+h4{
+    font-weight: bolder;
+
+}
+
+p{
+    align-content: center;
+    text-align: center;
+    justify-items: center;
+}
