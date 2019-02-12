@@ -6,26 +6,30 @@ services:
   - docker:dind
 
 stages:
-  - test
-  - build
+  - build-nodejs
+  - build-angularjs
 
-test:
-  image: node:10-alpine
-  stage: test
-  script:
-    - npm install
-  only:
-    refs:
-      - master
-build:
+build-nodejs:
   image: docker:latest
-  stage: build
+  stage: build-nodejs
   script:
     - apk add --no-cache curl jq python py-pip docker
     - pip install awscli
     - $(aws ecr get-login --no-include-email --region us-west-2)
-    - docker build -t $REPOSITORY_URL .
-    - docker push $REPOSITORY_URL
+    - docker build -t $REPOSITORY_URL/backend-prod ./backend
+    - docker push $REPOSITORY_URL/backend-prod
+  only:
+    refs:
+      - master
+build-angularjs:
+  image: docker:latest
+  stage: build-angularjs
+  script:
+    - apk add --no-cache curl jq python py-pip docker
+    - pip install awscli
+    - $(aws ecr get-login --no-include-email --region us-west-2)
+    - docker build -t $REPOSITORY_URL/frontend-prod ./frontend
+    - docker push $REPOSITORY_URL/frontend-prod
   only:
     refs:
       - master
