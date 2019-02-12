@@ -17,11 +17,10 @@ build-nodejs:
     - pip install awscli
     - $(aws ecr get-login --no-include-email --region us-west-2)
     - docker build -t $REPOSITORY_URL/backend-prod ./backend
-    - docker push $REPOSITORY_URL
+    - docker push $REPOSITORY_URL/backend-prod
   only:
     refs:
       - master
-
 build-angularjs:
   image: docker:latest
   stage: build-angularjs
@@ -30,7 +29,7 @@ build-angularjs:
     - pip install awscli
     - $(aws ecr get-login --no-include-email --region us-west-2)
     - docker build -t $REPOSITORY_URL/frontend-prod ./frontend
-    - docker push $REPOSITORY_URL
+    - docker push $REPOSITORY_URL/frontend-prod
   only:
     refs:
       - master
