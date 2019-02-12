@@ -16,8 +16,8 @@ build-nodejs:
     - apk add --no-cache curl jq python py-pip docker
     - pip install awscli
     - $(aws ecr get-login --no-include-email --region us-west-2)
-    - docker build -t $REPOSITORY_URL/backend-prod ./backend
-    - docker push $REPOSITORY_URL/backend-prod
+    - docker build -t $REPOSITORY_URL_PROD:backend ./backend
+    - docker push $REPOSITORY_URL_PROD:backend-prod
   only:
     refs:
       - master
@@ -28,8 +28,8 @@ build-angularjs:
     - apk add --no-cache curl jq python py-pip docker
     - pip install awscli
     - $(aws ecr get-login --no-include-email --region us-west-2)
-    - docker build -t $REPOSITORY_URL/frontend-prod ./frontend
-    - docker push $REPOSITORY_URL/frontend-prod
+    - docker build -t $REPOSITORY_URL_PROD:frontend ./frontend
+    - docker push $REPOSITORY_URL_PROD:frontend
   only:
     refs:
       - master
