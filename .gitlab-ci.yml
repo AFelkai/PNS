@@ -11,7 +11,7 @@ stages:
 
 build-nodejs:
   image: docker:latest
-  stage: build
+  stage: build-nodejs
   script:
     - apk add --no-cache curl jq python py-pip docker
     - pip install awscli
@@ -21,10 +21,10 @@ build-nodejs:
   only:
     refs:
       - master
-      
+
 build-angularjs:
   image: docker:latest
-  stage: build
+  stage: build-angularjs
   script:
     - apk add --no-cache curl jq python py-pip docker
     - pip install awscli
