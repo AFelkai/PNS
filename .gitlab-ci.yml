@@ -6,12 +6,12 @@ services:
   - docker:dind
 
 stages:
-  - build-nodejs
-  - build-angularjs
+  - build-backend
+  - build-frontend
 
-build-nodejs:
+build-backend:
   image: docker:latest
-  stage: build-nodejs
+  stage: build-backend
   script:
     - apk add --no-cache curl jq python py-pip docker
     - pip install awscli
@@ -21,9 +21,9 @@ build-nodejs:
   only:
     refs:
       - master
-build-angularjs:
+build-frontend:
   image: docker:latest
-  stage: build-angularjs
+  stage: build-frontend
   script:
     - apk add --no-cache curl jq python py-pip docker
     - pip install awscli

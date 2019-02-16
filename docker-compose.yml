@@ -1,7 +1,7 @@
 version: '3.3'
 
 services:
-    node:
+    backend:
         build:
             context: ./backend
         ports:
@@ -28,9 +28,10 @@ services:
             - "3306:3306"
         networks:
             - docker_network
-    angular:
+    frontend:
         build:
             context: ./frontend
+            dockerfile: Dockerfile-dev
         ports:
             - "4200:4200"
         networks:
