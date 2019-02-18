@@ -39,10 +39,10 @@ deploy-prod:
   stage: deploy-prod
   image: docker:latest
   script:
-    - source scripts/deploy.sh
+    - source scripts/deploy_prod.sh
   when: manual
 deploy-staging:
-  stage: deploy-prod
+  stage: deploy-staging
   image: docker:latest
   script:
-    - source scripts/deploy.sh
+    - source scripts/deploy_staging.sh
