@@ -1,3 +1,8 @@
 .container {
     position: relative;
 }
+
+a{
+    font: 100% "Helvetica", verdana, sans-serif;
+    font-size: small;
+}
