@@ -38,7 +38,7 @@ deploy-prod:
   stage: deploy-prod
   image: docker:latest
   script:
-    - source scripts/deploy_prod.sh
+    - source ./scripts/deploy_prod.sh
   only:
     refs:
       - master
