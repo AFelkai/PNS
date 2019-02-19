@@ -9,7 +9,6 @@ stages:
   - build-backend
   - build-frontend
   - deploy-prod
-  - deploy-staging
 
 build-backend:
   image: docker:latest
@@ -40,9 +39,3 @@ deploy-prod:
   image: docker:latest
   script:
     - source scripts/deploy_prod.sh
-  when: manual
-deploy-staging:
-  stage: deploy-staging
-  image: docker:latest
-  script:
-    - source scripts/deploy_staging.sh
