@@ -1,0 +1,1 @@
+aws ecs update-service --cluster saps-prod-cluster --service frontend --force-new-deployment

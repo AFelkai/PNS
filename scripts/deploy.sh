@@ -1,1 +1,0 @@
-# aws ecs update-service --cluster <clustername> --service <servicemname> --force-new-deployment

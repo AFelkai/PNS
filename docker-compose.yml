@@ -30,8 +30,8 @@ services:
             - docker_network
     frontend:
         build:
-            context: ./frontend
-            dockerfile: Dockerfile-dev
+          context: ./frontend
+          dockerfile: Dockerfile-dev
         ports:
             - "4200:4200"
         networks:
