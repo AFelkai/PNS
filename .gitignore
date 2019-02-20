@@ -81,3 +81,5 @@ typings/
 data/
 
 .DS_Store
+
+frontend/src/.DS_Store
