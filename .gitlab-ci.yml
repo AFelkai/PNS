@@ -8,6 +8,7 @@ services:
 stages:
   - build-backend
   - build-frontend
+  - deploy-staging
   - deploy-prod
 
 build-backend:
@@ -34,6 +35,16 @@ build-frontend:
   only:
     refs:
       - master
+deploy-staging:
+  stage: deploy-prod
+  image: docker:latest
+  script:
+    - apk add --no-cache curl jq python py-pip
+    - pip install awscli
+    - aws ecs update-service --cluster saps-staging-cluster --service app --force-new-deployment
+  only:
+    refs:
+      - master
 deploy-prod:
   stage: deploy-prod
   image: docker:latest
@@ -44,3 +55,4 @@ deploy-prod:
   only:
     refs:
       - master
+  when: manual
