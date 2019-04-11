@@ -6,6 +6,8 @@ import { AppComponent } from './app.component';
 import { NavbarComponent } from './components/navbar/navbar.component';
 import { SplashImageComponent } from './components/splash-image/splash-image.component';
 import { HighlightsComponent } from './components/highlights/highlights.component';
+import { LoginComponent } from './components/login/login.component';
+import { RequestPageComponent } from './components/request-page/request-page.component';
 
 @NgModule({
   declarations: [
@@ -13,6 +15,8 @@ import { HighlightsComponent } from './components/highlights/highlights.componen
     NavbarComponent,
     SplashImageComponent,
     HighlightsComponent,
+    LoginComponent,
+    RequestPageComponent,
   ],
   imports: [
     BrowserModule,
