@@ -11,4 +11,4 @@ ENV MYSQL_ROOT_PASSWORD=root
 CMD ["mysqld"]
 EXPOSE 3306
 
-CMD ["mysql /mysql/saps_setup.sql"]
+#CMD ["mysql /mysql/saps_setup.sql"]
