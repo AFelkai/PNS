@@ -1,6 +1,6 @@
 CREATE DATABASE SAPS; /*Creates the SAPS database*/
 
-USE SAPS;	 /*Select and work in this database*/
+USE SAPS; /*Select and work in this database*/
 
 /*Creates a table of students requesting a course permission*/
 CREATE TABLE STUDENTS(STUDENT_ID INT(9), STUDENT_NAME CHAR(20), MAJOR CHAR(40), DATE_REQUEST DATETIME, SEMESTER_UNITS TINYINT(25), COURSE_REQUESTED INT(5), TIME_REQUESTED TIMESTAMP, PRIMARY KEY(STUDENT_ID));
