@@ -8,7 +8,7 @@ services:
 stages:
   - build-backend
   - build-frontend
-  - deploy-staging
+#  - deploy-staging
   - deploy-prod
 
 build-backend:
@@ -55,4 +55,4 @@ deploy-prod:
   only:
     refs:
       - master
-  when: manual
+#  when: manual
