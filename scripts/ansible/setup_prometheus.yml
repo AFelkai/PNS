@@ -1,0 +1,57 @@
+---
+- hosts: all
+  become: true
+  tasks:
+      - name: Update yum repo
+        yum:
+          name: '*'
+          state: latest
+
+      - name: Create Prometheus user
+        shell: |
+          useradd --no-create-home --shell /bin/false prometheus
+          mkdir /etc/prometheus
+          mkdir /var/lib/prometheus
+          chown prometheus:prometheus /etc/prometheus
+          chown prometheus:prometheus /var/lib/prometheus
+
+      - name: Download file from a file path
+        get_url:
+          url: https://github.com/prometheus/prometheus/releases/download/v2.3.2/prometheus-2.3.2.linux-amd64.tar.gz
+          dest: /home/ec2-user/prometheus-2.3.2.linux-amd64.tar.gz
+
+      - name: Extract tar
+        unarchive:
+          src: /home/ec2-user/prometheus-2.3.2.linux-amd64.tar.gz
+          dest: /home/ec2-user/
+
+      - name: Move Prometheus
+        shell: |
+          mv /home/ec2-user/prometheus-2.3.2.linux-amd64 prometheus-files
+
+      - name: Move files
+        shell: |
+          cp prometheus-files/prometheus /usr/local/bin/
+          cp prometheus-files/promtool /usr/local/bin/
+          cp prometheus-files/promtool /usr/local/bin/
+          chown prometheus:prometheus /usr/local/bin/prometheus
+          chown prometheus:prometheus /usr/local/bin/promtool
+          cp -r prometheus-files/consoles /etc/prometheus
+          cp -r prometheus-files/console_libraries /etc/prometheus
+          chown -R prometheus:prometheus /etc/prometheus/consoles
+          chown -R prometheus:prometheus /etc/prometheus/console_libraries
+
+      - name: Move Prometheus.yml
+        shell: |
+          mv /home/ec2-user/prometheus.yml /etc/prometheus/prometheus.yml
+
+      - name: Change ownership and Setup Service File
+        shell: |
+          chown prometheus:prometheus /etc/prometheus/prometheus.yml
+          cp /home/ec2-user/prometheus.service /etc/systemd/system/prometheus.service
+
+      - name: Reload Prometheuse to register changes
+        shell: |
+          systemctl daemon-reload
+          systemctl start prometheus
+          systemctl status prometheus
