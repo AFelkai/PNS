@@ -1,0 +1,13 @@
+// import { NgModule } from '@angular/core';
+// import { Routes, RouterModule } from '@angular/router';
+
+// import { LoginComponent } from './components/login';
+// import { RequestPageComponent } from './components/request-page';
+
+// const routes: Routes = [
+//   {path: './components/login', component: LoginComponent},
+//   {path: './components/request-page', component: RequestPageComponent}
+// ];
+
+// //export class AppRoutingModule { }
+// export const routing = RouterModule.forRoot(routes);
