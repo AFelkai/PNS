@@ -13,8 +13,6 @@ import { RequestPageComponent } from './components/request-page/request-page.com
 
 const appRoutes: Routes = [
   { path: 'login', component: LoginComponent },
-
-
 ]
 @NgModule({
   
@@ -41,4 +39,6 @@ const appRoutes: Routes = [
   bootstrap: [AppComponent]
 })
 
-export class AppModule { }
+export class AppModule {
+
+ }
