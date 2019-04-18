@@ -1,0 +1,29 @@
+{   "variables": {
+        "aws_access_key": "",
+        "aws_secret_key": ""
+    },
+
+    "provisioners": [
+        {
+            "type": "shell",
+            "script": "provision.sh"
+        },
+        {
+            "type": "ansible-local",
+            "playbook_dir": "../Ansible",
+            "playbook_file": "../Ansible/playbooks/test.yml" 
+        }
+    ],
+    "builders": [{
+        "type": "amazon-ebs",
+        "region": "us-west-2",
+        "source_ami": "ami-0bbe6b35405ecebdb",
+        "instance_type": "t2.micro",
+        "vpc_id": "vpc-06bafdcb3d6eb3a86",
+        "subnet_id": "subnet-038671578f17118d2",
+        "ssh_keypair_name": "test",
+        "ssh_private_key_file": "test.pem",
+        "ssh_username": "ec2-user",
+        "ami_name": "pns-ami {{timestamp}}"
+    }]
+}

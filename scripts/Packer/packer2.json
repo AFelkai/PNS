@@ -1,0 +1,55 @@
+{
+    "variables": {
+      "aws_access_key": "",
+      "aws_secret_key": ""
+    },
+
+    "provisioners": [
+        {
+            "type": "file",
+            "source": "prometheus.service",
+            "destination": "/home/ec2-user/prometheus.service"
+        },
+
+        {
+            "type": "file",
+            "source": "node_exporter.service",
+            "destination": "/home/ec2-user/node_exporter.service"
+        },
+
+        {
+            "type": "file",
+            "source": "prometheus.yml",
+            "destination": "/home/ec2-user/prometheus.yml"
+        },
+
+        {
+            "type": "shell",
+            "script": "provision.sh"
+        },
+
+        {
+            "type": "ansible-local",
+            "playbook_dir": "../Ansible",
+            "playbook_file": "../Ansible/playbooks/test.yml" 
+        }
+    ],
+
+    "builders": [{
+      "type": "amazon-ebs",
+      "access_key": "{{user `aws_access_key`}}",
+      "secret_key": "{{user `aws_secret_key`}}",
+      "region": "us-west-2",
+      "source_ami": "ami-0054160a688deeb6a",
+      "instance_type": "t2.micro",
+      "ssh_username": "ec2-user",
+      "ami_name": "pns-ami {{timestamp}}",
+      "ssh_keypair_name": "test",
+      "ssh_private_key_file": "test.pem",
+      "disable_stop_instance": "true", 
+      "vpc_id": "vpc-0de32575",
+      "subnet_id": "subnet-56502d1d",
+      "security_group_id": "sg-0b73f9bcbf28cb6fd",
+      "name": "psn-ami {{timestamp}}"
+    }]
+  }
